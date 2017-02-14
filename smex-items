@@ -1,0 +1,29 @@
+
+;; ----- smex-history -----
+(
+ eval-buffer
+ projectile-remove-current-project-from-known-projects
+ projectile-project-info
+ projectile-mode
+ package-install
+ neotree-projectile-action
+ haskell-hoogle-lookup-from-local
+)
+
+;; ----- smex-data -----
+(
+ (package-list-packages . 1)
+ (package-install . 5)
+ (eval-buffer . 7)
+ (haskell-mode-stylish-buffer . 7)
+ (intero-restart . 1)
+ (inferior-haskell-find-haddock . 1)
+ (hoogle . 3)
+ (haskell-hoogle-lookup-from-local . 6)
+ (haskell-hoogle . 1)
+ (haskell-hoogle-kill-server . 2)
+ (neotree-projectile-action . 2)
+ (projectile-mode . 4)
+ (projectile-project-info . 1)
+ (projectile-remove-current-project-from-known-projects . 1)
+)
