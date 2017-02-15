@@ -11,6 +11,11 @@
 auto-save-list
 tramp
 .\#*
+ido.last
+smex-items
+/var/pcache
+projectile-bookmarks.eld
+recentf
 
 # Org-mode
 .org-id-locations
@@ -47,5 +52,6 @@ flycheck_*.el
 
 # directory configuration
 .dir-locals.el
+.DS_Store
 
 # End of https://www.gitignore.io/api/emacs
