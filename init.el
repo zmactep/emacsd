@@ -7,7 +7,7 @@
 
 ;; Comment all this after first run
 ;(package-refresh-contents)
-;(setq package-list '(ergoemacs-mode intero-mode all-the-icons neotree projectile smex))
+;(setq package-list '(ergoemacs-mode intero all-the-icons neotree projectile smex))
 ;(dolist (package package-list)
 ;  (unless (package-installed-p package)
 ;    (package-install package)))
