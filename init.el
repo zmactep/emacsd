@@ -5,12 +5,15 @@
   '("melpa" . "http://melpa.org/packages/") t)
 (package-initialize)
 
-;; Comment all this after first run
-;(package-refresh-contents)
-;(setq package-list '(ergoemacs-mode intero all-the-icons neotree projectile smex))
-;(dolist (package package-list)
-;  (unless (package-installed-p package)
-;    (package-install package)))
+;; Install all the packages on first run
+(defconst install-file (expand-file-name ".install-packages" user-emacs-directory))
+(unless (file-exists-p install-file)
+  (package-refresh-contents)
+  (setq package-list '(ergoemacs-mode intero all-the-icons neotree projectile smex))
+  (dolist (package package-list)
+    (unless (package-installed-p package)
+      (package-install package)))
+  (write-region "" "" install-file))
 
 ;; Hide toolbar and scrollbar
 (menu-bar-mode -1)
@@ -43,7 +46,7 @@
 (add-hook 'haskell-mode-hook 'intero-mode)
 ;; Add stack path to local PATH variable
 (add-to-list 'exec-path "/usr/local/bin/")
-(add-to-list 'exec-path "/Users/pavel/.local/bin/")
+(add-to-list 'exec-path "~/.local/bin/")
 
 ;; Include all-the-icons for pretty package tree
 (require 'all-the-icons)
@@ -70,7 +73,7 @@ current buffer directory."
 (setq projectile-switch-project-action 'neotree-projectile-action)
 
 ;; Set nice default font
-(set-default-font "Inconsolata 20")
+(set-default-font "Anonymous Pro 20")
 
 ;; Set line numbers
 (global-linum-mode t)
