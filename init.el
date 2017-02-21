@@ -9,7 +9,11 @@
 (defconst install-file (expand-file-name ".install-packages" user-emacs-directory))
 (unless (file-exists-p install-file)
   (package-refresh-contents)
-  (setq package-list '(ergoemacs-mode intero all-the-icons neotree projectile smex))
+  (setq package-list '(ergoemacs-mode intero
+		       all-the-icons neotree
+		       projectile smex
+		       yaml-mode idris-mode
+		       markdown-mode))
   (dolist (package package-list)
     (unless (package-installed-p package)
       (package-install package)))
@@ -47,6 +51,16 @@
 ;; Add stack path to local PATH variable
 (add-to-list 'exec-path "/usr/local/bin/")
 (add-to-list 'exec-path "~/.local/bin/")
+
+;; Markdown mode
+(autoload 'markdown-mode "markdown-mode"
+   "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+(autoload 'gfm-mode "markdown-mode"
+   "Major mode for editing GitHub Flavored Markdown files" t)
+(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+(setq markdown-command "/usr/local/bin/pandoc")
 
 ;; Include all-the-icons for pretty package tree
 (require 'all-the-icons)
