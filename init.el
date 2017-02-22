@@ -1,3 +1,4 @@
+
 ;; Use both elpa and melpa repos
 (require 'package)
 (add-to-list
@@ -7,7 +8,8 @@
 
 ;; Install all the packages on first run
 (defconst install-file (expand-file-name ".install-packages" user-emacs-directory))
-(unless (file-exists-p install-file)
+(defun update-zmactep-build ()
+  (interactive)
   (package-refresh-contents)
   (setq package-list '(ergoemacs-mode intero
 		       all-the-icons neotree
@@ -18,6 +20,9 @@
     (unless (package-installed-p package)
       (package-install package)))
   (write-region "" "" install-file))
+  
+(unless (file-exists-p install-file)
+  update-zmactep-build)
 
 ;; Hide toolbar and scrollbar
 (menu-bar-mode -1)
