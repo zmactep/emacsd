@@ -36,3 +36,20 @@ Usage
 =====
 
 Just enjoy your emacs.
+
+Common problems
+===============
+
+Some common problems and their solutions. Thanks to [Bogdan Neterebskii](https://github.com/OZzZzZ).
+
+Could not find font ...
+-----------------------
+
+If you want to use configuration default font do not forget to install it. In other case you may want to edit file ~/.emacs.d/init.el in line `(set-default-font ...)`. Feel free to edit parameters.
+
+Cound not install Intero!
+-------------------------
+
+It happens GHC version confusing fo Intero (look at [this](https://github.com/commercialhaskell/intero/issues/232) issue). Try to change or update your GHC version.
+
+Another way to solve this problem is to read log message carefully and find the answer. In my case it was `cannot find -ltinfo`. Im means that `tinfo` library was missing. So after installation (e.g. with command `apt-get install libtinfo-dev`) everything seems to be OK.

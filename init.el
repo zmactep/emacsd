@@ -91,3 +91,9 @@ current buffer directory."
 
 ;; Set line numbers
 (global-linum-mode t)
+
+;; Disable scratch message
+(setq initial-scratch-message nil)
+
+;; No backup files
+(setq make-backup-files nil)
