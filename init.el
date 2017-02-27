@@ -1,4 +1,3 @@
-
 ;; Use both elpa and melpa repos
 (require 'package)
 (add-to-list
@@ -15,14 +14,15 @@
 		       all-the-icons neotree
 		       projectile smex
 		       yaml-mode idris-mode
-		       markdown-mode))
+		       markdown-mode
+                       rainbow-delimiters))
   (dolist (package package-list)
     (unless (package-installed-p package)
       (package-install package)))
   (write-region "" "" install-file))
   
 (unless (file-exists-p install-file)
-  update-zmactep-build)
+  (update-zmactep-build))
 
 ;; Hide toolbar and scrollbar
 (menu-bar-mode -1)
@@ -50,6 +50,9 @@
 (setq ido-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
+
+; Rainbow mode for brackets
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;; Intero Haskell hook
 (add-hook 'haskell-mode-hook 'intero-mode)
@@ -92,7 +95,7 @@ current buffer directory."
 (setq projectile-switch-project-action 'neotree-projectile-action)
 
 ;; Set nice default font
-(set-default-font "Anonymous Pro 20")
+(set-default-font "Inconsolata 20")
 
 ;; Set line numbers
 (global-linum-mode t)
