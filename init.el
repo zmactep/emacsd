@@ -94,6 +94,12 @@ current buffer directory."
 ;; Set nice default font
 (set-default-font "Anonymous Pro 20")
 
+;; Set 80 column rule
+(require 'whitespace)
+(setq whitespace-line-column 80) ;; limit line length
+(setq whitespace-style '(face lines-tail))
+(add-hook 'prog-mode-hook 'whitespace-mode)
+
 ;; Set line numbers
 (global-linum-mode t)
 
