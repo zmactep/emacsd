@@ -22,7 +22,7 @@
   (write-region "" "" install-file))
   
 (unless (file-exists-p install-file)
-  update-zmactep-build)
+  (funcall 'update-zmactep-build))
 
 ;; Hide toolbar and scrollbar
 (menu-bar-mode -1)
