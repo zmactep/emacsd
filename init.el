@@ -1,3 +1,4 @@
+
 ;; Use both elpa and melpa repos
 (require 'package)
 (add-to-list
@@ -14,15 +15,14 @@
 		       all-the-icons neotree
 		       projectile smex
 		       yaml-mode idris-mode
-		       markdown-mode
-                       rainbow-delimiters))
+		       markdown-mode multiple-cursors))
   (dolist (package package-list)
     (unless (package-installed-p package)
       (package-install package)))
   (write-region "" "" install-file))
   
 (unless (file-exists-p install-file)
-  (update-zmactep-build))
+  (funcall 'update-zmactep-build))
 
 ;; Hide toolbar and scrollbar
 (menu-bar-mode -1)
@@ -51,11 +51,15 @@
 (setq ido-everywhere t)
 (ido-mode 1)
 
-; Rainbow mode for brackets
-(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+;; Keybinding for stylish-haskell
+(defun stylish-haskell-key ()
+  (local-set-key (kbd "C-c C-.") 'haskell-mode-stylish-buffer))
+
 
 ;; Intero Haskell hook
 (add-hook 'haskell-mode-hook 'intero-mode)
+;; Stylish Haskell hook
+(add-hook 'haskell-mode-hook 'stylish-haskell-key)
 ;; Add stack path to local PATH variable
 (add-to-list 'exec-path "/usr/local/bin/")
 (add-to-list 'exec-path "~/.local/bin/")
@@ -95,7 +99,18 @@ current buffer directory."
 (setq projectile-switch-project-action 'neotree-projectile-action)
 
 ;; Set nice default font
-(set-default-font "Inconsolata 20")
+(set-default-font "Anonymous Pro 20")
+
+;; Multiple cursors (see more functions at https://github.com/magnars/multiple-cursors.el)
+(defun multiple-cursors-key ()
+  (require 'multiple-cursors)
+  (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+  (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+  (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
+
+;; Multiple cursors Hook
+(add-hook 'prog-mode-hook 'multiple-cursors-key)
 
 ;; Set line numbers
 (global-linum-mode t)
