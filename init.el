@@ -51,8 +51,15 @@
 (setq ido-everywhere t)
 (ido-mode 1)
 
+;; Keybinding for stylish-haskell
+(defun stylish-haskell-key ()
+  (global-set-key (kbd "C-c C-.") 'haskell-mode-stylish-buffer))
+
+
 ;; Intero Haskell hook
 (add-hook 'haskell-mode-hook 'intero-mode)
+;; Stylish Haskell hook
+(add-hook 'haskell-mode-hook 'stylish-haskell-key)
 ;; Add stack path to local PATH variable
 (add-to-list 'exec-path "/usr/local/bin/")
 (add-to-list 'exec-path "~/.local/bin/")
@@ -92,17 +99,14 @@ current buffer directory."
 (setq projectile-switch-project-action 'neotree-projectile-action)
 
 ;; Set nice default font
-(set-default-font "Inconsolata 20")
+(set-default-font "Anonymous Pro 20")
 
-;; Use multi cursors
+;; Use multiple cursors (see more functions at https://github.com/magnars/multiple-cursors.el)
 (require 'multiple-cursors)
 (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
 (global-set-key (kbd "C->") 'mc/mark-next-like-this)
 (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
 (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
-
-;; Keybinding for stylish-haskell
-(global-set-key (kbd "C-c C-.") 'haskell-mode-stylish-buffer)
 
 ;; Set line numbers
 (global-linum-mode t)
@@ -112,17 +116,3 @@ current buffer directory."
 
 ;; No backup files
 (setq make-backup-files nil)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (persistent-soft multiple-cursors markdown-mode idris-mode yaml-mode smex projectile neotree all-the-icons intero ergoemacs-mode))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
