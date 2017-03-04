@@ -15,7 +15,7 @@
 		       all-the-icons neotree
 		       projectile smex
 		       yaml-mode idris-mode
-		       markdown-mode))
+		       markdown-mode multiple-cursors))
   (dolist (package package-list)
     (unless (package-installed-p package)
       (package-install package)))
@@ -51,8 +51,15 @@
 (setq ido-everywhere t)
 (ido-mode 1)
 
+;; Keybinding for stylish-haskell
+(defun stylish-haskell-key ()
+  (global-set-key (kbd "C-c C-.") 'haskell-mode-stylish-buffer))
+
+
 ;; Intero Haskell hook
 (add-hook 'haskell-mode-hook 'intero-mode)
+;; Stylish Haskell hook
+(add-hook 'haskell-mode-hook 'stylish-haskell-key)
 ;; Add stack path to local PATH variable
 (add-to-list 'exec-path "/usr/local/bin/")
 (add-to-list 'exec-path "~/.local/bin/")
@@ -93,6 +100,13 @@ current buffer directory."
 
 ;; Set nice default font
 (set-default-font "Anonymous Pro 20")
+
+;; Use multiple cursors (see more functions at https://github.com/magnars/multiple-cursors.el)
+(require 'multiple-cursors)
+(global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+(global-set-key (kbd "C->") 'mc/mark-next-like-this)
+(global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+(global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 
 ;; Set line numbers
 (global-linum-mode t)
