@@ -11,6 +11,7 @@
 
 (load-config "install.el")
 (load-config "environment.el")
+(load-config "keybindings.el")
 (load-config "programming.el")
 
 ;; Install all the packages on first run  
@@ -21,3 +22,9 @@
 (set-emacs-basics)
 (set-look-and-feel)
 (set-keybindings-and-suggests)
+
+;; Set key bindings
+(unbind-default-keys)
+(bind-cursor-keys)
+(bind-common-keys)
+(bind-file-keys)

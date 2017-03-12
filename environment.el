@@ -38,6 +38,8 @@
   (setq make-backup-files nil))
 
 (defun set-look-and-feel ()
+  ;; No annoying bell
+  (setq ring-bell-function 'ignore)
   ;; Open in fullscreen
   (set-frame-parameter nil 'fullscreen 'fullboth)
   ;; Load Dracula theme
@@ -51,13 +53,13 @@
   (set-project-tree))
 
 (defun set-keybindings-and-suggests ()
-  ;; Include package ergoemacs
-  (require 'ergoemacs-mode)
-  ;; Start ergoemacs mode
-  (setq ergoemacs-theme nil) ;; Uses Standard Ergoemacs keyboard theme
-  (setq ergoemacs-keyboard-layout "us") ;; Assumes QWERTY keyboard layout
-  (ergoemacs-mode 1)
+  ;; Disable MacOS actions
+  (setq mac-pass-command-to-system nil)
+  ;; Use undo tree
+  (global-undo-tree-mode 1)
   ;; Use ido mode
   (setq ido-enable-flex-matching t)
   (setq ido-everywhere t)
-  (ido-mode 1))
+  (ido-mode 1)
+  ;; Use tab for autocomplete
+  (setq tab-always-indent 'complete))

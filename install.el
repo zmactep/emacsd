@@ -3,12 +3,13 @@
 (defun update-zmactep-build ()
   (interactive)
   (package-refresh-contents)
-  (setq package-list '(ergoemacs-mode intero
-		       all-the-icons neotree
+  (setq package-list '(intero all-the-icons
+		       undo-tree neotree
 		       projectile smex
 		       yaml-mode idris-mode
 		       markdown-mode multiple-cursors
-                       rainbow-delimiters))
+                       rainbow-delimiters
+		       racket-mode))
   (dolist (package package-list)
     (unless (package-installed-p package)
       (package-install package)))

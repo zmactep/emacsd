@@ -6,7 +6,9 @@
   (require 'multiple-cursors)
   (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
   (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+  (global-set-key (kbd "s->") 'mc/mark-next-like-this)
   (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+  (global-set-key (kbd "s-<") 'mc/mark-previous-like-this)
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 (add-hook 'prog-mode-hook 'multiple-cursors-key)
 
@@ -25,3 +27,8 @@
   "Major mode for editing GitHub Flavored Markdown files" t)
 (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
 (setq markdown-command "/usr/local/bin/pandoc")
+
+;; Racket mode
+(defun enable-racket-stuff ()
+  (define-key racket-mode-map (kbd "C-c r") 'racket-run))
+(add-hook 'racket-mode-hook 'enable-racket-stuff)
