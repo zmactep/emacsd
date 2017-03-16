@@ -7,6 +7,7 @@
 		       undo-tree neotree
 		       projectile smex
 		       yaml-mode idris-mode
+                       shakespeare-mode
 		       markdown-mode multiple-cursors
                        rainbow-delimiters
 		       racket-mode))

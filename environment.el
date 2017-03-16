@@ -35,7 +35,12 @@
   ;; Disable scratch message
   (setq initial-scratch-message nil)
   ;; No backup files
-  (setq make-backup-files nil))
+  (setq make-backup-files nil)
+  ;; No tabs. Never. Ever
+  (setq-default indent-tabs-mode nil)
+  ;; Enable tramp remote editing
+  (require 'tramp)
+  (setq tramp-default-method "ssh"))
 
 (defun set-look-and-feel ()
   ;; No annoying bell

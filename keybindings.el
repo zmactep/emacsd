@@ -170,8 +170,11 @@
   (global-set-key (kbd "C-Z") 'undo-tree-redo)
   (global-set-key (kbd "C-z") 'undo-tree-undo)
   ;; Delete previous/next word
-  (global-set-key (kbd "M-e") 'kill-word)
-  (global-set-key (kbd "M-E") 'backward-kill-word)
+  (global-set-key (kbd "M-w") 'kill-word)
+  (global-set-key (kbd "M-W") 'backward-kill-word)
+  ;; Delete previous/next symbol
+  (global-set-key (kbd "M-e") 'delete-forward-char)
+  (global-set-key (kbd "M-E") 'delete-backward-char)
   ;; Delete line till end/beginning
   (global-set-key (kbd "M-g") 'kill-line)
   (global-set-key (kbd "M-G") 'kill-line-backward)
