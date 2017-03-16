@@ -12,10 +12,15 @@
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this))
 (add-hook 'prog-mode-hook 'multiple-cursors-key)
 
+(defun enable-hlint ()
+  (with-eval-after-load 'intero
+    (flycheck-add-next-checker 'intero '(warning . haskell-hlint))))
+
 ;; Haskell mode with cool keybindings
 (defun enable-haskell-stuff ()
   (intero-mode)
-  (local-set-key (kbd "C-c C-.") 'haskell-mode-stylish-buffer))
+  (local-set-key (kbd "C-c C-.") 'haskell-mode-stylish-buffer)
+  (enable-hlint))
 (add-hook 'haskell-mode-hook 'enable-haskell-stuff)
 
 ;; Markdown mode
