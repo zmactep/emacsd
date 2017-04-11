@@ -29,7 +29,7 @@ Installation
 1. Install emacs 25.x+. For macOS use [Emacs for Mac OS X](https://emacsformacosx.com).
 1. Clone the config: `git clone https://github.com/zmactep/emacsd ~/.emacs.d`
 1. Install all the fonts from [fonts](https://github.com/zmactep/emacsd/tree/master/fonts) directory.
-1. Install [stack](https://haskellstack.org), [stylish-haskell](https://github.com/jaspervdj/stylish-haskell) and [pandoc](http://pandoc.org). 
+1. Install [stack](https://haskellstack.org), [stylish-haskell](https://github.com/jaspervdj/stylish-haskell), [hlint](https://github.com/ndmitchell/hlint) and [pandoc](http://pandoc.org). 
 
 Than just run **emacs**. It will install all the packages and configs on the first start.
 

@@ -10,7 +10,7 @@
                        shakespeare-mode
 		       markdown-mode multiple-cursors
                        rainbow-delimiters
-		       racket-mode))
+		       racket-mode flymake-hlint))
   (dolist (package package-list)
     (unless (package-installed-p package)
       (package-install package)))
