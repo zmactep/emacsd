@@ -51,7 +51,7 @@
   (add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
   (load-theme 'dracula t)
   ;; Set nice default font
-  (set-default-font "Inconsolata 20")
+  (set-default-font "Inconsolata LGC 20")
   ;; Set line numbers
   (global-linum-mode t)
   ;; Set project tree panel
