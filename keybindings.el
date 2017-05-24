@@ -153,6 +153,10 @@
 
 ;; COMMON OPERATIONS
 (defun bind-common-keys ()
+  ;; Text scale
+  (global-set-key (kbd "s--") 'text-scale-decrease)
+  (global-set-key (kbd "s-=") 'text-scale-increase)
+  (global-set-key (kbd "s-0") 'text-scale-default)
   ;; Execute command
   (global-set-key (kbd "M-a") 'smex)
   (global-set-key (kbd "M-r") 'eval-expression)
@@ -234,6 +238,11 @@
   (if (looking-back "\n")
       (delete-char -1)
     (kill-line 0)))
+
+(defun text-scale-default ()
+  "Sets text-scale to 0"
+  (interactive)
+  (text-scale-set 0))
 
 (defun move-cursor-next-pane ()
   "Move cursor to the next pane."
