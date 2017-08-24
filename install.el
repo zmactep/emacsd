@@ -9,7 +9,7 @@
 		       yaml-mode idris-mode
                        shakespeare-mode
 		       markdown-mode multiple-cursors
-                       rainbow-delimiters
+                       rainbow-delimiters auctex
 		       racket-mode flymake-hlint))
   (dolist (package package-list)
     (unless (package-installed-p package)

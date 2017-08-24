@@ -26,14 +26,28 @@
 ;; Markdown mode
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
-(add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
-(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
-(autoload 'gfm-mode "markdown-mode"
+  (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+  (autoload 'gfm-mode "markdown-mode"
   "Major mode for editing GitHub Flavored Markdown files" t)
-(add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
-(setq markdown-command "/usr/local/bin/pandoc")
+  (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
+;;(setq markdown-command "/usr/local/bin/pandoc")
+(setq markdown-command "~/.emacs.d/bin/flavor")
 
 ;; Racket mode
 (defun enable-racket-stuff ()
   (define-key racket-mode-map (kbd "C-c r") 'racket-run))
 (add-hook 'racket-mode-hook 'enable-racket-stuff)
+
+;; LaTeX mode
+(defun enable-latex-stuff ()
+  (setq TeX-auto-save t)
+  (setq TeX-parse-self t)
+  (setq TeX-close-quote "")
+  (setq TeX-open-quote "")
+  (setq-default TeX-master nil)
+  (setq-default TeX-engine 'xetex)
+  (setq-default TeX-command "xelatex")
+  ;; use pdflatex
+  (setq TeX-PDF-mode t))
+(add-hook 'LaTeX-mode-hook 'enable-latex-stuff)

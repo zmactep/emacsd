@@ -26,6 +26,9 @@
   ;; Add local paths to PATH environment
   (add-to-list 'exec-path "/usr/local/bin/")
   (add-to-list 'exec-path "~/.local/bin/")
+  (when (eq system-type 'darwin)
+    (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/"))  
+    (add-to-list 'exec-path "/Library/TeX/texbin/"))
   ;; Hide menubar, toolbar and scrollbar
   (menu-bar-mode -1)
   (tool-bar-mode -1)

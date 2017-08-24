@@ -126,24 +126,38 @@
 (defun bind-cursor-keys ()
   ;; Single char cursor movement
   (global-set-key (kbd "M-j") 'backward-char)
+  (global-set-key (kbd "M-о") 'backward-char)
   (global-set-key (kbd "M-l") 'forward-char)
+  (global-set-key (kbd "M-д") 'forward-char)
   (global-set-key (kbd "M-i") 'previous-line)
+  (global-set-key (kbd "M-ш") 'previous-line)
   (global-set-key (kbd "M-k") 'next-line)
+  (global-set-key (kbd "M-л") 'next-line)
   ;; Move by word
   (global-set-key (kbd "M-u") 'backward-word)
+  (global-set-key (kbd "M-г") 'backward-word)
   (global-set-key (kbd "M-o") 'forward-word)
+  (global-set-key (kbd "M-щ") 'forward-word)
   ;; Move by paragraph
   (global-set-key (kbd "M-U") 'backward-paragraph)
+  (global-set-key (kbd "M-Г") 'backward-paragraph)
   (global-set-key (kbd "M-O") 'forward-paragraph)
+  (global-set-key (kbd "M-Щ") 'forward-paragraph)
   ;; Move to buffer beggining/end
   (global-set-key (kbd "M-<") 'beginning-of-buffer)
+  (global-set-key (kbd "M-Б") 'beginning-of-buffer)
   (global-set-key (kbd "M->") 'end-of-buffer)
+  (global-set-key (kbd "M-Ю") 'end-of-buffer)
   ;; Move to beginning/ending of line
   (global-set-key (kbd "M-J") 'beginning-of-line-text)
+  (global-set-key (kbd "M-О") 'beginning-of-line-text)
   (global-set-key (kbd "M-L") 'end-of-line)
+  (global-set-key (kbd "M-Д") 'end-of-line)
   ;; Move by screen (page up/down)
   (global-set-key (kbd "M-I") 'scroll-down)
+  (global-set-key (kbd "M-Ш") 'scroll-down)
   (global-set-key (kbd "M-K") 'scroll-up)
+  (global-set-key (kbd "M-Л") 'scroll-up)
   ;; Recenter screen
   (global-set-key (kbd "M-p")
                 (if (fboundp 'recenter-top-bottom)
@@ -162,37 +176,60 @@
   (global-set-key (kbd "M-r") 'eval-expression)
   ;; Find by isearch
   (global-set-key (kbd "s-f") 'isearch-forward)
+  (global-set-key (kbd "s-а") 'isearch-forward)
   (global-set-key (kbd "s-F") 'isearch-backward)
+  (global-set-key (kbd "s-А") 'isearch-backward)
   (add-hook 'isearch-mode-hook
 	    (lambda ()
 	      (define-key isearch-mode-map (kbd "s-f") 'isearch-repeat-forward)
+	      (define-key isearch-mode-map (kbd "s-а") 'isearch-repeat-forward)
+	      (define-key isearch-mode-map (kbd "s-А") 'isearch-repeat-backward)
 	      (define-key isearch-mode-map (kbd "s-F") 'isearch-repeat-backward)))
   ;; Replace
   (global-set-key (kbd "s-r") 'query-replace)
+  (global-set-key (kbd "s-к") 'query-replace)
   (global-set-key (kbd "s-R") 'query-replace-regexp)
+  (global-set-key (kbd "s-К") 'query-replace-regexp)
   ;; Undo and redo
   (global-set-key (kbd "C-Z") 'undo-tree-redo)
+  (global-set-key (kbd "C-Я") 'undo-tree-redo)
   (global-set-key (kbd "C-z") 'undo-tree-undo)
+  (global-set-key (kbd "C-я") 'undo-tree-undo)
   ;; Delete previous/next word
   (global-set-key (kbd "M-w") 'kill-word)
+  (global-set-key (kbd "M-ц") 'kill-word)
   (global-set-key (kbd "M-W") 'backward-kill-word)
+  (global-set-key (kbd "M-Ц") 'backward-kill-word)
   ;; Delete previous/next symbol
   (global-set-key (kbd "M-e") 'delete-forward-char)
+  (global-set-key (kbd "M-у") 'delete-forward-char)
   (global-set-key (kbd "M-E") 'delete-backward-char)
+  (global-set-key (kbd "M-У") 'delete-backward-char)
   ;; Delete line till end/beginning
   (global-set-key (kbd "M-g") 'kill-line)
+  (global-set-key (kbd "M-п") 'kill-line)
   (global-set-key (kbd "M-G") 'kill-line-backward)
+  (global-set-key (kbd "M-П") 'kill-line-backward)
   ;; Duplicate line
   (global-set-key (kbd "M-d") 'duplicate-line)
+  (global-set-key (kbd "M-в") 'duplicate-line)
   (global-set-key (kbd "s-d") 'duplicate-line)
+  (global-set-key (kbd "s-в") 'duplicate-line)
   ;; Copy Cut Paste, Paste previous
   (global-set-key (kbd "s-x") 'kill-region)
+  (global-set-key (kbd "s-ч") 'kill-region)
   (global-set-key (kbd "s-c") 'kill-ring-save)
+  (global-set-key (kbd "s-с") 'kill-ring-save)
   (global-set-key (kbd "s-v") 'yank)
+  (global-set-key (kbd "s-м") 'yank)
   (global-set-key (kbd "s-a") 'mark-whole-buffer)
+  (global-set-key (kbd "s-ф") 'mark-whole-buffer)
   (global-set-key (kbd "M-x") 'kill-whole-line)
+  (global-set-key (kbd "M-ч") 'kill-whole-line)
   (global-set-key (kbd "M-c") 'copy-line)
+  (global-set-key (kbd "M-с") 'copy-line)
   (global-set-key (kbd "M-v") 'yank)
+  (global-set-key (kbd "M-м") 'yank)
   ;; Comment code
   (global-set-key (kbd "C-/") 'comment-line)
   (global-set-key (kbd "s-/") 'comment-line)
@@ -202,22 +239,32 @@
 (defun bind-file-keys ()
   ;; Create new buffer
   (global-set-key (kbd "C-n") 'new-empty-buffer)
+  (global-set-key (kbd "C-т") 'new-empty-buffer)
   (global-set-key (kbd "s-n") 'new-empty-buffer)
+  (global-set-key (kbd "s-т") 'new-empty-buffer)
   ;; Open file
   (global-set-key (kbd "C-o") 'find-file)
+  (global-set-key (kbd "C-щ") 'find-file)
   (global-set-key (kbd "s-o") 'find-file)
+  (global-set-key (kbd "s-щ") 'find-file)
   ;; Close buffer
   (global-set-key (kbd "C-w") 'close-current-buffer)
+  (global-set-key (kbd "C-ц") 'close-current-buffer)
   (global-set-key (kbd "s-w") 'close-current-buffer)
+  (global-set-key (kbd "s-ц") 'close-current-buffer)
   ;; Save buffer
   (global-set-key (kbd "C-s") 'save-buffer)
+  (global-set-key (kbd "C-ы") 'save-buffer)
   (global-set-key (kbd "s-s") 'save-buffer)
+  (global-set-key (kbd "s-ы") 'save-buffer)
   ;; Save as
   (global-set-key (kbd "C-S-s") 'write-file)
   (global-set-key (kbd "s-S-s") 'write-file)
   ;; Select buffer
   (global-set-key (kbd "C-e") 'switch-to-buffer)
+  (global-set-key (kbd "C-у") 'switch-to-buffer)
   (global-set-key (kbd "s-e") 'switch-to-buffer)
+  (global-set-key (kbd "s-у") 'switch-to-buffer)
   ;; Switch buffers
   (global-set-key (kbd "s-{") 'previous-user-buffer)
   (global-set-key (kbd "s-}") 'next-user-buffer)
