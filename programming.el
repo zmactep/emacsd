@@ -24,20 +24,31 @@
 (add-hook 'haskell-mode-hook 'enable-haskell-stuff)
 
 ;; Markdown mode
-(autoload 'markdown-mode "markdown-mode"
-  "Major mode for editing Markdown files" t)
+(defun enable-markdown-stuff ()
+  (autoload 'markdown-mode "markdown-mode"
+    "Major mode for editing Markdown files" t)
   (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
   (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
   (autoload 'gfm-mode "markdown-mode"
-  "Major mode for editing GitHub Flavored Markdown files" t)
+    "Major mode for editing GitHub Flavored Markdown files" t)
   (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
-;;(setq markdown-command "/usr/local/bin/pandoc")
-(setq markdown-command "~/.emacs.d/bin/flavor")
+  ;; (setq markdown-command "/usr/local/bin/pandoc")
+  (setq markdown-command "~/.emacs.d/bin/flavor"))
+(enable-markdown-stuff)
 
 ;; Racket mode
 (defun enable-racket-stuff ()
   (define-key racket-mode-map (kbd "C-c r") 'racket-run))
 (add-hook 'racket-mode-hook 'enable-racket-stuff)
+
+;; Lean mode
+(defun enable-lean-stuff ()
+  (setq lean-rootdir (getenv "LEAN_ROOTDIR"))
+  (setq lean-emacs-path (getenv "LEAN_EMACS_PATH"))
+  (when (and (stringp lean-rootdir) (stringp lean-emacs-path))
+    (setq load-path (cons lean-emacs-path load-path))
+    (require 'lean-mode)))
+(enable-lean-stuff)
 
 ;; LaTeX mode
 (defun enable-latex-stuff ()

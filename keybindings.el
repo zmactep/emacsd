@@ -120,10 +120,17 @@
   (global-unset-key (kbd "C-x 5 0")) ; delete-frame
   (global-unset-key (kbd "C-x 5 2")) ; make-frame-command
 
-  (global-unset-key (kbd "C-M-%"))) ; query-replace-regexp
+  (global-unset-key (kbd "C-M-%")) ; query-replace-regexp
+
+  (global-unset-key (kbd "C-,"))) ; flyspell-goto-next-error
 
 ;; BIND CURSOR MOVEMENTS
 (defun bind-cursor-keys ()
+  ;; Move between panes
+  (global-set-key (kbd "C-i") 'windmove-up)
+  (global-set-key (kbd "C-k") 'windmove-down)
+  (global-set-key (kbd "C-j") 'windmove-left)
+  (global-set-key (kbd "C-l") 'windmove-right)
   ;; Single char cursor movement
   (global-set-key (kbd "M-j") 'backward-char)
   (global-set-key (kbd "M-о") 'backward-char)
@@ -167,6 +174,8 @@
 
 ;; COMMON OPERATIONS
 (defun bind-common-keys ()
+  ;; Misspell correction
+  (global-set-key (kbd "C-,") 'flyspell-check-next-highlighted-word)
   ;; Text scale
   (global-set-key (kbd "s--") 'text-scale-decrease)
   (global-set-key (kbd "s-=") 'text-scale-increase)
@@ -277,6 +286,12 @@
   ;; Switch panes
   (global-set-key (kbd "M-s") 'move-cursor-next-pane)
   (global-set-key (kbd "M-S") 'move-cursor-previous-pane))
+
+(defun flyspell-check-next-highlighted-word ()
+  "Custom function to spell check next highlighted word"
+  (interactive)
+  (flyspell-goto-next-error)
+  (ispell-word))
 
 (defun kill-line-backward ()
   "Kill text between the beginning of the line to the cursor position.

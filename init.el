@@ -1,4 +1,4 @@
-;; Use both elpa and melpa repos
+; Use both elpa and melpa repos
 (require 'package)
 (add-to-list
   'package-archives

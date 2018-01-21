@@ -55,5 +55,7 @@ flycheck_*.el
 .DS_Store
 
 .install-packages
-
+.mc-lists.md
+ac-comphist.dat
+request
 # End of https://www.gitignore.io/api/emacs

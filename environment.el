@@ -27,8 +27,12 @@
   (add-to-list 'exec-path "/usr/local/bin/")
   (add-to-list 'exec-path "~/.local/bin/")
   (when (eq system-type 'darwin)
+    ;; Add macOS-specific path to MacTeX (or BasicTeX) package
     (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/"))  
-    (add-to-list 'exec-path "/Library/TeX/texbin/"))
+    (add-to-list 'exec-path "/Library/TeX/texbin/")
+    ;; Set lean environments. Ugly hack, we need something better
+    (setenv "LEAN_ROOTDIR" "/opt/lean-3.2.0/")
+    (setenv "LEAN_EMACS_PATH" "/opt/lean-3.2.0/share/emacs/site-lisp/lean/"))
   ;; Hide menubar, toolbar and scrollbar
   (menu-bar-mode -1)
   (tool-bar-mode -1)
@@ -43,7 +47,18 @@
   (setq-default indent-tabs-mode nil)
   ;; Enable tramp remote editing
   (require 'tramp)
-  (setq tramp-default-method "ssh"))
+  (setq tramp-default-method "ssh")
+  ;; Enable on-the-fly spellcheck
+  (add-hook 'text-mode-hook 'flyspell-mode)
+  (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+  (with-eval-after-load "ispell"
+    ;; Install dictionaries from 'https://github.com/wooorm/dictionaries'
+    (setq ispell-program-name "hunspell")
+    (setq ispell-dictionary "en_GB,ru_RU")
+    ;; ispell-set-spellchecker-params has to be called
+    ;; before ispell-hunspell-add-multi-dic will work
+    (ispell-set-spellchecker-params)
+    (ispell-hunspell-add-multi-dic "en_GB,ru_RU")))
 
 (defun set-look-and-feel ()
   ;; No annoying bell
@@ -55,6 +70,7 @@
   (load-theme 'dracula t)
   ;; Set nice default font
   (set-default-font "Inconsolata LGC 20")
+  (setq default-frame-alist '((font . "Inconsolata LGC 20")))
   ;; Set line numbers
   (global-linum-mode t)
   ;; Set project tree panel
