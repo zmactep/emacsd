@@ -36,11 +36,6 @@
   (setq markdown-command "~/.emacs.d/bin/flavor"))
 (enable-markdown-stuff)
 
-;; Racket mode
-(defun enable-racket-stuff ()
-  (define-key racket-mode-map (kbd "C-c r") 'racket-run))
-(add-hook 'racket-mode-hook 'enable-racket-stuff)
-
 ;; Lean mode
 (defun enable-lean-stuff ()
   (setq lean-rootdir (getenv "LEAN_ROOTDIR"))

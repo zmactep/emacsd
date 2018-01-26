@@ -10,7 +10,7 @@
                        shakespeare-mode
 		       markdown-mode multiple-cursors
                        rainbow-delimiters auctex
-		       racket-mode flymake-hlint
+		       flymake-hlint
                        dash dash-functional f s))
   (dolist (package package-list)
     (unless (package-installed-p package)
