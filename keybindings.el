@@ -183,6 +183,9 @@
   ;; Execute command
   (global-set-key (kbd "M-a") 'smex)
   (global-set-key (kbd "M-r") 'eval-expression)
+  ;; Git keybindings
+  (global-set-key (kbd "C-x g") 'magit-status)
+  (global-set-key (kbd "C-x M-g") 'magit-dispatch-popup)
   ;; Find by isearch
   (global-set-key (kbd "s-f") 'isearch-forward)
   (global-set-key (kbd "s-а") 'isearch-forward)
