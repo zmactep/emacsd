@@ -24,15 +24,8 @@
 
 (defun set-emacs-basics ()
   ;; Add local paths to PATH environment
-  (add-to-list 'exec-path "/usr/local/bin/")
-  (add-to-list 'exec-path "~/.local/bin/")
-  (when (eq system-type 'darwin)
-    ;; Add macOS-specific path to MacTeX (or BasicTeX) package
-    (setenv "PATH" (concat (getenv "PATH") ":/Library/TeX/texbin/"))  
-    (add-to-list 'exec-path "/Library/TeX/texbin/")
-    ;; Set lean environments. Ugly hack, we need something better
-    (setenv "LEAN_ROOTDIR" "/opt/lean-3.2.0/")
-    (setenv "LEAN_EMACS_PATH" "/opt/lean-3.2.0/share/emacs/site-lisp/lean/"))
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize))
   ;; Hide menubar, toolbar and scrollbar
   (menu-bar-mode -1)
   (tool-bar-mode -1)

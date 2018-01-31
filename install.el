@@ -3,10 +3,11 @@
 (defun update-zmactep-build ()
   (interactive)
   (package-refresh-contents)
-  (setq package-list '(intero all-the-icons
-		       undo-tree neotree
+  (setq package-list '(exec-path-from-shell
+                       all-the-icons undo-tree neotree
 		       projectile smex
-		       yaml-mode idris-mode
+		       intero yaml-mode idris-mode
+                       lean-mode company-lean
                        shakespeare-mode
 		       markdown-mode multiple-cursors
                        rainbow-delimiters auctex

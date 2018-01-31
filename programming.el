@@ -36,15 +36,6 @@
   (setq markdown-command "~/.emacs.d/bin/flavor"))
 (enable-markdown-stuff)
 
-;; Lean mode
-(defun enable-lean-stuff ()
-  (setq lean-rootdir (getenv "LEAN_ROOTDIR"))
-  (setq lean-emacs-path (getenv "LEAN_EMACS_PATH"))
-  (when (and (stringp lean-rootdir) (stringp lean-emacs-path))
-    (setq load-path (cons lean-emacs-path load-path))
-    (require 'lean-mode)))
-(enable-lean-stuff)
-
 ;; LaTeX mode
 (defun enable-latex-stuff ()
   (setq TeX-auto-save t)
