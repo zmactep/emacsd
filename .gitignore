@@ -16,6 +16,7 @@ smex-items
 /var/pcache
 projectile-bookmarks.eld
 recentf
+/url/
 
 # Org-mode
 .org-id-locations
@@ -25,8 +26,7 @@ recentf
 *_flymake.*
 
 # eshell files
-/eshell/history
-/eshell/lastdir
+/eshell/
 
 # elpa packages
 /elpa/

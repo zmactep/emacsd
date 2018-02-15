@@ -20,8 +20,19 @@
 (defun enable-haskell-stuff ()
   (intero-mode)
   (local-set-key (kbd "C-c C-.") 'haskell-mode-stylish-buffer)
-  (enable-hlint))
+  (add-hook 'flycheck-mode-hook 'flycheck-haskell-setup)
+  (flycheck-mode))
 (add-hook 'haskell-mode-hook 'enable-haskell-stuff)
+
+(defun enable-rust-stuff ()  
+  (require 'rust-mode)
+  (add-hook 'flycheck-mode-hook #'flycheck-rust-setup)
+  (racer-mode)
+  (eldoc-mode)
+  (company-mode)
+  (flycheck-mode)
+  (setq company-tooltip-align-annotations t))
+(add-hook 'rust-mode-hook 'enable-rust-stuff)
 
 ;; Markdown mode
 (defun enable-markdown-stuff ()
@@ -32,7 +43,7 @@
   (autoload 'gfm-mode "markdown-mode"
     "Major mode for editing GitHub Flavored Markdown files" t)
   (add-to-list 'auto-mode-alist '("README\\.md\\'" . gfm-mode))
-  ;; (setq markdown-command "/usr/local/bin/pandoc")
+  ;; (setq markdown-command "pandoc")
   (setq markdown-command "~/.emacs.d/bin/flavor"))
 (enable-markdown-stuff)
 

@@ -35,7 +35,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (company-lean lean-mode exec-path-from-shell yaml-mode undo-tree smex shakespeare-mode rainbow-delimiters racket-mode projectile nyan-mode neotree multiple-cursors markdown-mode magit intero idris-mode flymake-hlint f ein dash-functional auctex all-the-icons))))
+    (flycheck-haskell flycheck-rust racer rust-mode company-lean lean-mode exec-path-from-shell yaml-mode undo-tree smex shakespeare-mode rainbow-delimiters racket-mode projectile nyan-mode neotree multiple-cursors markdown-mode magit intero idris-mode flymake-hlint f ein dash-functional auctex all-the-icons))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

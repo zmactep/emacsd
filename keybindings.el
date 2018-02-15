@@ -174,6 +174,8 @@
 
 ;; COMMON OPERATIONS
 (defun bind-common-keys ()
+  ;; Company complete for lean-mode and other
+  (global-set-key (kbd "S-SPC") #'company-complete)
   ;; Misspell correction
   (global-set-key (kbd "C-,") 'flyspell-check-next-highlighted-word)
   ;; Text scale
