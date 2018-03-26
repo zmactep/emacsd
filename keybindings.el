@@ -177,7 +177,12 @@
   ;; Company complete for lean-mode and other
   (global-set-key (kbd "S-SPC") #'company-complete)
   ;; Misspell correction
-  (global-set-key (kbd "C-,") 'flyspell-check-next-highlighted-word)
+  (require 'flyspell-correct-popup)
+  (define-key flyspell-mode-map (kbd "C-;") 'flyspell-correct-previous-word-generic)
+  ;; Go to next/prev TODO mark
+  (require 'hl-todo)
+  (define-key hl-todo-mode-map (kbd "C-c p") 'hl-todo-previous)
+  (define-key hl-todo-mode-map (kbd "C-c n") 'hl-todo-next)
   ;; Text scale
   (global-set-key (kbd "s--") 'text-scale-decrease)
   (global-set-key (kbd "s-=") 'text-scale-increase)

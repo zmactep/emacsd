@@ -9,10 +9,11 @@
 		       intero flycheck-haskell
                        yaml-mode idris-mode
                        lean-mode company-lean
-                       shakespeare-mode
-		       markdown-mode multiple-cursors
-                       rainbow-delimiters auctex
-		       magit
+                       shakespeare-mode markdown-mode
+                       multiple-cursors rainbow-delimiters
+                       auctex magit hl-mode
+                       fill-column-indicator
+                       flyspell-correct-popup
                        rust-mode racer flycheck-rust
                        dash dash-functional f s))
   (dolist (package package-list)

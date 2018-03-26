@@ -21,6 +21,7 @@
   (intero-mode)
   (local-set-key (kbd "C-c C-.") 'haskell-mode-stylish-buffer)
   (add-hook 'flycheck-mode-hook 'flycheck-haskell-setup)
+  (enable-hlint)
   (flycheck-mode))
 (add-hook 'haskell-mode-hook 'enable-haskell-stuff)
 

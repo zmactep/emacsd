@@ -43,7 +43,7 @@
   (setq tramp-default-method "ssh")
   ;; Enable on-the-fly spellcheck
   (add-hook 'text-mode-hook 'flyspell-mode)
-  (add-hook 'prog-mode-hook 'flyspell-prog-mode)
+  (add-hook 'prog-mode-hook 'hl-todo-mode)
   (with-eval-after-load "ispell"
     ;; Install dictionaries from 'https://github.com/wooorm/dictionaries'
     (setq ispell-program-name "hunspell")
@@ -64,6 +64,9 @@
   ;; Set nice default font
   (set-default-font "Inconsolata LGC 20")
   (setq default-frame-alist '((font . "Inconsolata LGC 20")))
+  ;; Set line at 80 position
+  (setq fci-rule-width 1)
+  (setq fci-rule-color "#6272a4")
   ;; Set line numbers
   (global-linum-mode t)
   ;; Set project tree panel
